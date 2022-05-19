@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Logged In</title>
+
+</head>
+
+<body>
+
+    <br>
+    <select class="form-select" id="selectVal" name="selectVal">
+        <option selected value="find">Find</option>
+        <option value="update">Update</option>
+        <option value="create">Create</option>
+        <option value="delete">Delete</option>
+      </select>
+    <button type="button" id="select" class="btn btn-primary">Select</button>
+
+
+    <hr>
+
+    <div id="output" class="container">
+        <!-- --------------------------------FIND=====================-------------------------------- -->
+        <div class="card text-white bg-primary mb-3" id="find-body">
+            <h5 class="card-header">
+                <center> Find</center>
+            </h5>
+            <div class="card-body">
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="Product" name="Product" placeholder="Product Name">
+                    <button class="btn btn-outline-light bg-success" id="find">Find</button>
+
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <!-- ------------------------------------Create----------------------------------------- -->
+        <div class="card text-white bg-success mb-3" id="create-body">
+            <h5 class="card-header">
+                <center> Create</center>
+            </h5>
+            <div class="card-body">
+
+                <div class="input-group mb-3">
+
+                    <div class="input-group">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Product</label>
+                        <input type="text" class="form-control" id="cProduct" placeholder="Product">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">ProductType</label>
+                        <input type="text" class="form-control" id="cProductType" placeholder="ProductType">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">ProductColor</label>
+
+                        <div class="col col-input-group mb-3" id="cProductColor" placeholder="ProductColor">
+                            <select class="form-select" id="inputGroupSelect02">
+                                      <option value="White">White</option>
+                                      <option value="Black">Black</option>
+                                      <option value="-">None</option>
+                        </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">ProductPrice</label>
+                        <input type="number" class="form-control" id="cProductPrice" placeholder="ProductPrice">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">CustomerAddress</label>
+                        <input type="text" class="form-control" id="cCustomerAddress" placeholder="CustomerAddress">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">CustomerContactNo</label>
+                        <input type="number" class="form-control" id="cCustomerContactNo" placeholder="CustomerContactNo">
+                    </div>
+                    <div class="input-group mb-3">
+                        <button class="btn btn-primary" type="submit" id="create">Create</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ============================Delete======================================= -->
+        <div class="card text-white bg-danger mb-3" id="delete-body">
+            <h5 class="card-header">
+                <center> Delete</center>
+            </h5>
+            <div class="card-body">
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Product name" id="delete-Product">
+                    <button class="btn btn-outline-dark bg-light" id="delete">Delete</button>
+                </div>
+
+            </div>
+            <div id="delOp"></div>
+        </div>
+        <!-- ---------------------------------------------UPDATE================== -->
+
+        <div class="card text-white bg-success mb-3" id="update-body">
+            <h5 class="card-header">
+                <center> Update</center>
+            </h5>
+            <div class="card-body">
+
+                <form id="update">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="Product" placeholder="Product name">
+                        <button class="btn btn-outline-light bg-primary" type="submit" id="button-addon2">Update</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+        <!-- =======================================Update-Find-Data=========================== -->
+        <div id="found" class="card text-white bg-sucess">
+
+            <fieldset disabled="disabled">
+                <div class="input-group ">
+                    <span class="input-group-text" id="inputGroup-sizing-default">id</span>
+                    <input type="text" class="form-control" id="_id">
+                </div>
+            </fieldset>
+            <div class="input-group ">
+                <span class="input-group-text" id="inputGroup-sizing-default">Product</span>
+                <input type="text" class="form-control" placeholder="Product" id="Product-name">
+            </div>
+            <div class="input-group">
+                <span class="input-group-text" id="inputGroup-sizing-default">ProductType</span>
+                <input type="text" class="form-control" placeholder="ProductType" id="ProductType">
+            </div>
+            <div class="input-group ">
+                <span class="input-group-text" id="inputGroup-sizing-default">ProductColor</span>
+                <input type="text" class="form-control" placeholder="ProductColor" id="ProductColor">
+            </div>
+            <div class="input-group">
+                <span class="input-group-text" id="inputGroup-sizing-default">ProductPrice</span>
+                <input type="text" class="form-control" placeholder="ProductPrice" id="ProductPrice">
+            </div>
+            <div class="input-group ">
+                <span class="input-group-text" id="inputGroup-sizing-default">CustomerAddress</span>
+                <input type="text" class="form-control" placeholder="CustomerAddress" id="CustomerAddress">
+            </div>
+            <div class="input-group ">
+                <span class="input-group-text" id="inputGroup-sizing-default">CustomerContactNo</span>
+                <input type="text" class="form-control" placeholder="CustomerContactNo" id="CustomerContactNo">
+            </div>
+            <div class="input-group ">
+                <button class="btn btn-success bg-primary" id="updateBTN">Update</button>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+        $(document).ready(function() {
+
+
+            hide = () => {
+                $('#create-body').hide();
+                $('#find-body').hide();
+                $('#update-body').hide();
+                $('#delete-body').hide();
+                $('#found').hide();
+            }
+
+            hide();
+
+
+            $('#select').click(function() {
+
+                const operation = $('#selectVal').find(":selected").val();
+                console.log(operation);
+                hide();
+                if (operation == "find") {
+                    $('#find-body').show();
+                } else if (operation == "create") {
+                    $('#create-body').show();
+                } else if (operation == "delete") {
+                    $('#delete-body').show();
+                } else if (operation == "update") {
+                    $('#update-body').show();
+                }
+
+
+            })
+
+            // ===================================================Find--------------------------//
+
+            $("#find").click(() => {
+
+                const find = $("#Product").val();
+                console.log(find);
+                $.ajax({
+                    url: '/data/find',
+                    method: 'get',
+                    data: {
+                        "Product": find
+                    },
+                    success(result, status, xhr) {
+                        // error  hendeling==============================
+                        console.log('result: ', result);
+                        if (!result || result.length == 0) {
+                            swal({
+                                title: "Error",
+                                text: "Invalid input",
+                                icon: "error",
+                                button: "Try Again",
+                            });
+                        } else if (result == 'Session Over') {
+                            $('#find-body').append(`
+                                <div class="alert alert-danger" role="alert">
+                                    Session is over Please Loog In Again
+                                    </div>`);
+                            setTimeout(() => {
+                                window.location.assign('http://localhost:3000/')
+                            }, 2000);
+                        } else {
+                            // ==============on Success==============================
+                            $('#found').show();
+                            $('#updateBTN').hide();
+                            $('#_id').val(result[0]._id);
+                            $('#Product-name').val(result[0].Product);
+                            $('#ProductType').val(result[0].ProductType);
+                            $('#ProductColor').val(result[0].ProductColor);
+                            $('#ProductPrice').val(result[0].ProductPrice);
+                            $('#CustomerAddress').val(result[0].CustomerAddress);
+                            $('#CustomerContactNo').val(result[0].CustomerContactNo);
+                        }
+                    }
+
+                })
+            })
+
+
+            $("#update").on("submit", function(event) {
+                event.preventDefault();
+                const find = $(this).serialize();
+                console.log(find);
+                let token = localStorage.getItem('token');
+                // headers: {
+                //     token: token
+                // },
+                // token: token,
+                //========================================Find To Update=====================//
+                $.ajax({
+                    url: '/data/change',
+                    method: 'get',
+                    data: find,
+                    headers: {
+                        token: token
+                    },
+                    success(result, status, xhr) {
+
+                        console.log('resyult: ', result);
+                        if (result.length == 0) {
+                            swal({
+                                title: "Error",
+                                text: "Invalid Entrirs try Again",
+                                icon: "error",
+                                button: "Try Again",
+                            });
+                        } else {
+                            $('#found').show();
+                            $('#updateBTN').show();
+                            $('#_id').val(result[0]._id);
+                            $('#Product-name').val(result[0].Product);
+                            $('#ProductType').val(result[0].ProductType);
+                            $('#ProductColor').val(result[0].ProductColor);
+                            $('#ProductPrice').val(result[0].ProductPrice);
+                            $('#CustomerAddress').val(result[0].CustomerAddress);
+                            $('#CustomerContactNo').val(result[0].CustomerContactNo);
+                        }
+                    },
+                    error() {
+                        swal({
+                            title: "Error",
+                            text: "Something went wrong",
+                            icon: "error",
+                            button: "okey",
+                        });
+                    },
+
+                });
+            });
+
+            //============================================Change For Update=============================================//
+
+            $("#updateBTN").click(() => {
+                let change = {
+                    _id: $("#_id").val(),
+                    Product: $('#Product-name').val(),
+                    ProductType: $('#ProductType').val(),
+                    ProductColor: $('#ProductColor').val(),
+                    ProductPrice: $('#ProductPrice').val(),
+                    CustomerAddress: $('#CustomerAddress').val(),
+                    CustomerContactNo: $('#CustomerContactNo').val(),
+                }
+                if (!change.Product ||
+                    !change.ProductType ||
+                    !change.ProductColor ||
+                    !change.ProductPrice ||
+                    !change.CustomerAddress ||
+                    !change.CustomerContactNo) {
+
+                    console.log(change);
+                    swal({
+                        title: "Empty Field Somewere",
+                        text: "Please Enter valid Values in form",
+                        icon: "error",
+                        button: "okey",
+                    });
+                } else {
+                    console.log(change);
+
+
+                    let token = localStorage.getItem('token');
+
+                    $.ajax({
+                        url: "/data/update",
+                        method: "PUT",
+                        data: change,
+                        headers: {
+                            token: token
+                        },
+                        success(result, status, xhr) {
+                            console.log(result);
+                            swal({
+                                title: "Success",
+                                text: "Successfully Changed",
+                                icon: "success",
+                                button: "okey",
+                            });
+                        },
+                        error() {
+                            swal({
+                                title: "Empty Field",
+                                text: "Something Went Wrong",
+                                icon: "error",
+                                button: "okey",
+                            });
+                        },
+                    });
+                }
+            });
+            //  ============================create================================================>
+            $('#create').click(function() {
+                let change = {
+                    Product: $('#cProduct').val(),
+                    ProductType: $('#cProductType').val(),
+                    ProductColor: $('#cProductColor').find(":selected").val(),
+                    ProductPrice: $('#cProductPrice').val(),
+                    CustomerAddress: $('#cCustomerAddress').val(),
+                    CustomerContactNo: $('#cCustomerContactNo').val(),
+                }
+                if (!change.Product ||
+                    !change.ProductType ||
+                    !change.ProductColor ||
+                    !change.ProductPrice ||
+                    !change.CustomerAddress ||
+                    !change.CustomerContactNo) {
+
+                    console.log(change);
+                    swal({
+                        title: "Empty Field Somewere",
+                        text: "Please Enter valid Values in form",
+                        icon: "error",
+                        button: "okey",
+                    });
+                    $("#create-body").append(`<div class="alert alert-danger" role="alert">Error:Data Entry Error</div>`);
+                } else {
+
+                    let token = localStorage.getItem('token');
+                    $.ajax({
+                        url: "/data/",
+                        method: "POST",
+                        data: change,
+                        headers: {
+                            token: token
+                        },
+                        success(result, status, xhr) {
+                            swal("Data Successfully Enterd", {
+
+                                icon: "success",
+                                button: "Okk...!",
+                            });
+                        },
+                        error(xhr, status, error) {
+                            swal({
+                                title: "Error",
+                                text: "Something Went Wrongh Please try again",
+                                icon: "error",
+                                button: "Try Again",
+                            });
+                            console.log(error)
+                        }
+
+                    })
+                }
+
+
+            });
+
+            // =================================Delete===========================
+
+            $('#delete').click(function() {
+                const deleteval = $('#delete-Product').val();
+                console.log(deleteval);
+                if (
+                    deleteval == undefined ||
+                    deleteval.length == 0
+                ) {
+                    swal({
+                        title: "Error",
+                        text: "Invalid Field",
+                        icon: "error",
+                        button: "Try Again",
+                    });
+
+
+                } else {
+                    let token = localStorage.getItem('token');
+                    $.ajax({
+                        url: '/data/delete',
+                        method: 'delete',
+                        headers: {
+                            token: token
+                        },
+                        data: {
+                            Product: deleteval
+                        },
+                        success(result, status, xhr) {
+                            $("#delOp").html(`
+                            <div class="alert alert-success" role="alert">
+                                Success:  Data Successfully Deleted....!
+                                </div>`);
+
+                        },
+                        error(xhr, status, error) {
+                            swal({
+                                title: "Error",
+                                text: "Some thing Went wrong,Are Youn Sure You Enterd Correct Value???",
+                                icon: "error",
+                                button: "Try Again",
+                            })
+                            console.log(error)
+                        }
+
+                    })
+                }
+            })
+
+        });
+    </script>
+
+</body>
+
+</html>

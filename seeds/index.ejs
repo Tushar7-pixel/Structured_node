@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- <script src="./hendeler.js"></script> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<div class="container">
+
+
+    <div class="d-grid gap-2" id="index-container">
+        <button class="btn btn-danger" type="button" id="register-btn">Register</button>
+        <button class="btn btn-warning" type="button" id="login-btn">SignIn</button>
+    </div>
+
+
+
+    <div id="register-container">
+
+        <div class="mb-3 form">
+            <label class="form-check-label" for="exampleCheck1">Name</label>
+            <input type="text" class="form-control" id="r-name">
+        </div>
+        <div class="mb-3" id="r-email-div">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="r-email" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">example123@xyz.com</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="r-password">
+            <div id="PassHelp" class="form-text">7-14 charactors includesat least one numeric digit, one uppercase and one lowercase letter</div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="r-submit-btn">Submit</button>
+
+    </div>
+
+    <br>
+
+    <div id="login-container">
+
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">email</label>
+            <input type="email" class="form-control" id="l-name" placeholder="Name">
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">passsword</label>
+            <input type="password" class="form-control" id="l-password" name="password" placeholder="passsword">
+        </div>
+        <button type="submit" class="btn btn-primary" id="l-login-btn">LogIn</button>
+
+    </div>
+</div>
+
+
+<script src="./js/hendeler.js"></script>
+
+</body>
+
+</html>
+
+</html>
+
+</html>
